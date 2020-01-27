@@ -100,3 +100,38 @@ function displayQ(q) {
 starTrekQ.dequeue();
 starTrekQ.dequeue();
 displayQ(starTrekQ);
+
+
+const dancingTeam = new Queue();
+dancingTeam.enqueue({gender: 'F', name : 'Jane'});
+dancingTeam.enqueue({gender: 'M', name : 'Frank'});
+dancingTeam.enqueue({gender: 'F', name : 'Madonna'});
+dancingTeam.enqueue({gender: 'M', name : 'David'});
+dancingTeam.enqueue({gender: 'F', name : 'Beyonce'});
+dancingTeam.enqueue({gender: 'M', name : 'Chris'});
+dancingTeam.enqueue({gender: 'M', name : 'Sherlock'});
+dancingTeam.enqueue({gender: 'M', name : 'John'});
+
+function  pairPartner (dancingTeam) {
+  const maleQueue = new Queue();
+  const femaleQueue = new Queue();
+ 
+  while(dancingTeam.first !== null) {
+    const next = dancingTeam.first.val;
+    dancingTeam.dequeue();
+
+    if(next.gender === 'F') {
+      femaleQueue.enqueue(next.name)
+    } else {
+      maleQueue.enqueue(next.name)
+    }
+    if (femaleQueue.first !== null && maleQueue.first !== null){
+      const pairs = 'The female dancer is ' + femaleQueue.first.val + ' and the male dancer is' + maleQueue.first.val + '.'
+      console.log(pairs)
+      maleQueue.dequeue()
+      femaleQueue.dequeue()
+    }
+  }
+}
+
+pairPartner(dancingTeam)
