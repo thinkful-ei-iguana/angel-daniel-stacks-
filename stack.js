@@ -7,15 +7,15 @@ class _node {
 
 class Stack {
   constructor() {
-    this.front = null;
+    this.top = null;
   }
 
   push(val) {
-    this.front = new _node(val, this.front);
+    this.top = new _node(val, this.top);
   }
 
   pop() {
-    this.front = this.front.next;
+    this.top = this.top.next;
   }
 }
 
