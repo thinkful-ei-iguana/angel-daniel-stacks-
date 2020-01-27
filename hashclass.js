@@ -13,25 +13,25 @@ class HashMap {
     return this._hashTable[index].value;
   }
   set(key, value) {
-  const loadRatio = (this.length + this._deleted + 1) / this._capacity
+    const loadRatio = (this.length + this._deleted + 1) / this._capacity;
     if (loadRatio > HashMap.MAX_LOAD_RATIO) {
       this._resize(this._capacity * HashMap.SIZE_RATIO);
     }
     const index = this._findSlot(key);
-      if(!this._hashTable[index]){
-        this.length++;
-      }
-      this._hashTable[index] = {
-        key,
-        value,
-        DELETED: false
-      }; 
+    if(!this._hashTable[index]){
+      this.length++;
+    }
+    this._hashTable[index] = {
+      key,
+      value,
+      DELETED: false
+    }; 
   }
   delete(key) {
     const index = this._findSlot(key);
     const slot = this._hashTable[index];
     if (slot === undefined) {
-        throw new Error('Key error');
+      throw new Error('Key error');
     }
     slot.DELETED = true;
     this.length--;
@@ -45,7 +45,7 @@ class HashMap {
       const index = i % this._capacity;
       const slot = this._hashTable[index];
       if (slot === undefined || (slot.key === key && !slot.DELETED)) {
-            return index;
+        return index;
       }
     }
   }
@@ -72,4 +72,4 @@ class HashMap {
   }
 }
 
-module.exports = HashMap
+module.exports = HashMap;
