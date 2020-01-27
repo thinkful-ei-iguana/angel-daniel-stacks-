@@ -1,4 +1,5 @@
 const Stack = require('./stack');
+const Queue = require('./Queue');
 const starTrek = new Stack;
 
 starTrek.push('Kirk');
@@ -20,11 +21,13 @@ function isEmpty(stack) {
 }
 
 function display(stack) {
+  let str = '';
   let currNode = stack.top;
   while(currNode !== null) {
-    console.log(currNode.val);
+    str += currNode.val + ', ';
     currNode = currNode.next;
-  }  
+  } 
+  console.log(str);
 }
 display(starTrek);
 
@@ -50,22 +53,50 @@ function sortStack(originalStack) {
   let newStack = new Stack ();
   while(!isEmpty(originalStack)) {
     let temp = originalStack.pop();
-    console.log(`temp: ${temp}`)
-    display(originalStack)
     while(!isEmpty(newStack) && (peek(newStack) > temp)) {
-      originalStack.push(newStack.pop())
+      originalStack.push(newStack.pop());
     }
     newStack.push(temp);
   }
   while(!isEmpty(newStack)) {
-    originalStack.push(newStack.pop())
+    originalStack.push(newStack.pop());
   }
 }
 
 let stack = new Stack();
-stack.push(5)
-stack.push(4)
-stack.push(2)
-stack.push(8)
-sortStack(stack)
-display(stack)
+stack.push(5);
+stack.push(4);
+stack.push(2);
+stack.push(8);
+sortStack(stack);
+display(stack);
+
+/// Q 6
+const starTrekQ = new Queue();
+starTrekQ.enqueue('Kirk');
+starTrekQ.enqueue('Spock');
+starTrekQ.enqueue('Uhura');
+starTrekQ.enqueue('Sulu');
+starTrekQ.enqueue('Checkov');
+
+function peekQ(q) {
+  return q.first.val;
+}
+
+function isQEmpty(q) {
+  return !!q.first;
+}
+
+function displayQ(q) {
+  let str = '';
+  let node = q.first;
+  while (node !== null) {
+    str += node.val + ', ';
+    node = node.next;
+  }
+  console.log(str);
+}
+
+starTrekQ.dequeue();
+starTrekQ.dequeue();
+displayQ(starTrekQ);
