@@ -1,4 +1,5 @@
 const HashMap = require('./hashclass');
+const ChainMap = require('./chainMap');
 
 function main() {
   let lor = new HashMap ();
@@ -67,4 +68,28 @@ function containsPalidrome (str) {
   }
 }
 
-console.log(containsPalidrome('north'))
+console.log(containsPalidrome('north'));
+
+////////
+function princtChain(map) {
+  
+}
+
+
+const chainLOTR = new ChainMap();
+
+chainLOTR.set('Hobbit', 'Bilbo');
+chainLOTR.set('Hobbit', 'Frodo');
+chainLOTR.set('Wizard', 'Gandalf');
+chainLOTR.set('Human', 'Aragorn');
+chainLOTR.set('Elf', 'Legolas');
+chainLOTR.set('Maiar', 'The Necromancer');
+chainLOTR.set('Maiar', 'Sauron');
+chainLOTR.set('RingBearer', 'Gollum');
+chainLOTR.set('LadyofLight', 'Galadriel');
+chainLOTR.set('HalfElven', 'Arwen');
+chainLOTR.set('Ent', 'Treebeard');
+
+console.log(chainLOTR);
+console.log(chainLOTR.get('Hobbit'));
+console.log(chainLOTR.get('Maiar'));

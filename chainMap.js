@@ -10,7 +10,11 @@ class HashMap {
     if(this._hashTable[index] === undefined) {
       return undefined;
     }
-    return this._hashTable[index].value;
+    let node = this._hashTable[index];
+    while (node) {
+      if (node.key === key) return this._hashTable[index].value;
+    }
+    
   }
   set(key, value) {
     const loadRatio = (this.length + this._deleted + 1) / this._capacity;
@@ -20,12 +24,24 @@ class HashMap {
     const index = this._findSlot(key);
     if(!this._hashTable[index]){
       this.length++;
+      this._hashTable[index] = {
+        key,
+        value,
+        DELETED: false,
+        next: null
+      }; 
+    } else {
+      let node = this._hashTable[index];
+      while (node.next) {
+        node = node.next;
+      }
+      node.next = {
+        key,
+        value,
+        DELETED: false,
+        next: null
+      };
     }
-    this._hashTable[index] = {
-      key,
-      value,
-      DELETED: false
-    }; 
   }
   delete(key) {
     const index = this._findSlot(key);
