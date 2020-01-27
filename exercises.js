@@ -135,3 +135,32 @@ function  pairPartner (dancingTeam) {
 }
 
 pairPartner(dancingTeam)
+
+
+const bank = new Queue;
+function bankQ() {
+  const paperwork = Math.random() > 0.25;
+  bank.enqueue(paperwork);
+  const front = bank.first;
+  bank.dequeue();
+  if (front.val === false) {
+    bank.enqueue(Math.random() > 0.25);
+  }
+  displayQ(bank);
+}
+
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
+bankQ();
