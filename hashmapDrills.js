@@ -3,7 +3,7 @@ const HashMap = require('./hashclass');
 function main() {
   let lor = new HashMap ();
   lor.MAX_LOAD_RATIO = 0.5;
-  lor.SIZE_RATION = 3;
+  lor.SIZE_RATIO = 3;
   lor.set('Hobbit', 'Bilbo');
   lor.set('Hobbit', 'Frodo');
   lor.set('Wizard', 'Gandolf');
@@ -41,3 +41,30 @@ main();
   6 : 15 -> 33
   8 : 17
 */
+
+
+function containsPalidrome (str) {
+  const hmPalidrome = new HashMap()
+  hmPalidrome.MAX_LOAD_RATIO = 0.5;
+  hmPalidrome.SIZE_RATIO = 3;
+  for (let i = 0; i < str.length; i++) {
+    if (hmPalidrome.get(str[i]) === undefined) {
+      hmPalidrome.set(str[i], 1)
+    } else {
+      hmPalidrome.set(str[i], hmPalidrome.get(str[i]) + 1)
+    }
+  }
+  let odds = 0 ;
+  for(let j = 0; j < str.length; j++ ) {
+    if (hmPalidrome.get(str[j]) % 2 === 1) {
+      odds++
+    }
+  }
+  if(odds > 1 ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+console.log(containsPalidrome('north'))
