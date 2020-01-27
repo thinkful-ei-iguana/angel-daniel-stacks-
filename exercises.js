@@ -45,3 +45,27 @@ function isPalindrome(str) {
 
 console.log(isPalindrome('A man, a plan, a canal: Panama'));
 
+//Drill 5
+function sortStack(originalStack) {
+  let newStack = new Stack ();
+  while(!isEmpty(originalStack)) {
+    let temp = originalStack.pop();
+    console.log(`temp: ${temp}`)
+    display(originalStack)
+    while(!isEmpty(newStack) && (peek(newStack) > temp)) {
+      originalStack.push(newStack.pop())
+    }
+    newStack.push(temp);
+  }
+  while(!isEmpty(newStack)) {
+    originalStack.push(newStack.pop())
+  }
+}
+
+let stack = new Stack();
+stack.push(5)
+stack.push(4)
+stack.push(2)
+stack.push(8)
+sortStack(stack)
+display(stack)
